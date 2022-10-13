@@ -15,24 +15,40 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-
 	// ${1/[:.*\n]/, /g}
 
-	"Next Component w Props": {
+  "Next Component": {
 		//"scope": "typescript",
 		"prefix": "nc",
+    "description": "Next Component with no props",
 		"body": [
-			"type ${TM_FILENAME/(.{1})(.*)\\..+$/${1:/upcase}${2}/}Props = {",
-			"\t$1",
-			"}\n",
-			"const ${TM_FILENAME/(.{1})(.*)\\..+$/${1:/upcase}${2}/} = ({ $2 }: ${TM_FILENAME/(.{1})(.*)\\..+$/${1:/upcase}${2}/}Props) => {",
+			"const ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/} = () => {",
 			"\treturn (",
 			"\t\t<div>",
-			"\t\t\t${0:${TM_FILENAME/(.{1})(.*)\\..+$/${1:/upcase}${2}/}}",
+			"\t\t\t${0:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}",
 			"\t\t</div>",
 			"\t)",
 			"}\n",
-			"export default ${TM_FILENAME/(.{1})(.*)\\..+$/${1:/upcase}${2}/}"
+			"export default ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}"
+		]
+	},
+
+	"Next Component w Props": {
+		//"scope": "typescript",
+		"prefix": "ncp",
+    "description": "Next Component with a type for props",
+		"body": [
+			"type ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}Props = {",
+			"\t$1",
+			"}\n",
+			"const ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/} = ({ ${1/(:.*($|\n))/, /g}}: ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}Props) => {",
+			"\treturn (",
+			"\t\t<div>",
+			"\t\t\t${0:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}",
+			"\t\t</div>",
+			"\t)",
+			"}\n",
+			"export default ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}"
 		]
 	}
 }
