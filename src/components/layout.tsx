@@ -7,7 +7,7 @@ export default function Layout({ children }) {
     <div className={styles.app}>
       <Navbar />
       <main className="flex-grow">
-        Main
+        {children}
       </main>
       <Footer />
     </div>
