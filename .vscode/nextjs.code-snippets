@@ -22,14 +22,14 @@
 		"prefix": "nc",
     "description": "Next Component with no props",
 		"body": [
-			"const ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/} = () => {",
+			"const ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}} = () => {",
 			"\treturn (",
 			"\t\t<div>",
-			"\t\t\t${0:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}",
+			"\t\t\t${0:${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}}",
 			"\t\t</div>",
 			"\t)",
 			"}\n",
-			"export default ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}"
+			"export default ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}"
 		]
 	},
 
@@ -38,17 +38,17 @@
 		"prefix": "ncp",
     "description": "Next Component with a type for props",
 		"body": [
-			"type ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}Props = {",
-			"\t$1",
+			"type ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}Props = {",
+			"\t$2",
 			"}\n",
-			"const ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/} = ({ ${1/(:.*($|\n))/, /g}}: ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}Props) => {",
+			"const ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}} = ({ ${1/(:.*($|\n))/, /g}}: ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}Props) => {",
 			"\treturn (",
 			"\t\t<div>",
-			"\t\t\t${0:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}",
+			"\t\t\t${0:${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}}",
 			"\t\t</div>",
 			"\t)",
 			"}\n",
-			"export default ${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}"
+			"export default ${1:${TM_FILENAME_BASE/(.*)/${1:/capitalize}/}}"
 		]
 	}
 }
