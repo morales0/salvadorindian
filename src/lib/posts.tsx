@@ -5,7 +5,7 @@ import { remark } from "remark";
 import html from "remark-html";
 import NotionPageToHtml from "notion-page-to-html";
 
-
+/*
 const postsDirectory = path.join(process.cwd(), "posts");
 
 export function getSortedPostsData() {
@@ -96,3 +96,4 @@ export async function getPostFromNotion(url) {
     contentHtml: html
   }
 }
+*/
