@@ -1,15 +1,29 @@
 import Footer from "./footer";
 import styles from "./layout.module.scss";
-import Navbar from "./navbar";
+import Header from "./header";
 
-export default function Layout({ children }) {
+type LayoutProps = {
+  home?: boolean,
+  mainClasses?: string,
+  children?: React.ReactNode,
+}
+
+const Layout = ({ children, home, mainClasses }: LayoutProps) => {
   return (
     <div className={styles.app}>
-      <Navbar />
-      <main className="flex-grow">
+      <Header />
+      <main 
+        className={`
+          flex-grow
+          ${mainClasses || ''}
+          ${home && 'py-4'}
+        `}
+      >
         {children}
       </main>
       <Footer />
     </div>
   );
 }
+
+export default Layout;

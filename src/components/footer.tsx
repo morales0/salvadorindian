@@ -2,7 +2,7 @@ type FooterProps = {
   
 }
 
-const Footer: React.FC<FooterProps> = (props) => {
+const Footer = (props: FooterProps) => {
   return (
     <div className="flex w-full px-4 py-4 bg-slate-200">
       <p className="text-sm text-slate-800 font-semibold italic">Moraliam</p>
