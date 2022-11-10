@@ -1,10 +1,33 @@
+.Home {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+
+  padding: 1rem 2rem;
+}
+
+.home_hero {
+  height: 400px;
+  background: url(../assets/cooking_tools_2.jpg) no-repeat center center;
+  background-size: cover;
+}
+
+@media (max-width: 1000px) {
+  .home_hero {
+    font-size: 2rem;
+    height: 250px;
+  }
+}
 
 .home_blog {
-  flex: 3 1 600px;
+  flex: 2 1 65%;
+
+  /* background-color: #0070f3; */
 }
 
 .home_aside {
-  flex: 1 0 auto;
+  flex: 1 1 300px;
+  /* background-color: #6fb76f; */
 }
 
 

@@ -16,7 +16,6 @@ const Layout = ({ children, home, mainClasses }: LayoutProps) => {
         className={`
           flex-grow
           ${mainClasses || ''}
-          ${home && 'py-4'}
         `}
       >
         {children}

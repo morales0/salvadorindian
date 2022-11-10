@@ -3,9 +3,8 @@ import { useState } from "react";
 
 // Data
 const links = [
-  ["#", "Blog"],
-  ["#", "Recipes"],
-  ["#", "Ingredients"],
+  ["/blog", "Blog"],
+  ["/recipes", "Recipes"],
   ["#", "About"],
   ["#", "Contact Us"],
 ];

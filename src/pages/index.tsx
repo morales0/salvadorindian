@@ -34,38 +34,36 @@ const currentBlogPost = {
 const Home: NextPage = () => {
   return (
     <Layout home>
-      <div className="m-auto py-4 px-8 flex flex-wrap gap-8">
+      <Hero />
+      
+      <div className={`${styles.Home}`}>
         <Blog {...currentBlogPost} />
-        <HomeSidebar>
-          <h1>Recent Blogs</h1>
-          <hr className="border-t-2 mb-3 border-gray-200"/>
-
-          <div className="flex flex-wrap gap-4">
-            {mockPostData.map((post, i) => (
-              <BlogPostCard
-                key={`index-post-card-${i}`}
-                {...post}
-              />
-            ))}
-          </div>
-        </HomeSidebar>
+        <HomeSidebar />
       </div>
     </Layout>
   );
 };
+
+const Hero = () => {
+  return (
+    <div className={`${styles.home_hero} flex justify-start items-start text-6xl text-white p-6`}>
+      Fusion Food
+    </div>
+  )
+}
+
 type BlogProps = {
   title: string,
   date: string,
   tags: string[],
   content: string
 }
-
 const Blog = ({ title, date, tags, content }: BlogProps) => {
   return (
     <div className={`${styles.home_blog}`}>
       <header>
         <h1>{title}</h1>
-        <hr className="border-t-2 mb-3 border-gray-200"/>
+        <hr className="border-t-2 mb-3 border-gray-200" />
         <div>{date}</div>
         <div>
           <span>Tags:</span>
@@ -87,7 +85,6 @@ type BlogPostProps = {
 const BlogPostCard = ({ title, date, preview }: BlogPostProps) => {
   return (
     <div className={`
-
       cursor-pointer
     `}>
       <h2 className="font-bold text-lg">{title}</h2>
@@ -98,13 +95,24 @@ const BlogPostCard = ({ title, date, preview }: BlogPostProps) => {
 }
 
 type HomeSidebarProps = {
-  children: React.ReactNode
+
 }
 
-const HomeSidebar = ({ children }: HomeSidebarProps) => {
+const HomeSidebar = ({ }: HomeSidebarProps) => {
   return (
     <aside className={`${styles.home_aside}`}>
-      {children}
+      <div>
+        <h1>Recent Blogs</h1>
+        <hr className="border-t-2 mb-3 border-gray-200" />
+        <div className="flex flex-wrap gap-4">
+          {mockPostData.map((post, i) => (
+            <BlogPostCard
+              key={`index-post-card-${i}`}
+              {...post}
+            />
+          ))}
+        </div>
+      </div>
     </aside>
   )
 }
