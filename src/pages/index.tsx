@@ -1,80 +1,51 @@
-import type { NextPage } from "next";
-import Head from "next/head";
-import Image from "next/image";
 
+import Blog from "@components/app/blog";
+import Layout from "@components/layout";
+import Hero from "@components/ui/hero";
+import { getLatestBlogPost } from "../lib/blog-api";
 import styles from "../styles/Home.module.css";
-import Layout from "../components/layout";
 
-const mockPostData = [
-  {
-    title: 'Pupusas',
-    date: '10-23-2022',
-    preview: 'This is a preview for an amazing article on pupusas!'
-  },
-  {
-    title: 'Samosas',
-    date: '9-23-2022',
-    preview: 'This is a preview for an amazing article on samosas!'
+// Get latest blog posts and some recipes
+export const getStaticProps = async () => {
+  // use api to get blogs
+  const latestBlog = await getLatestBlogPost()
+  const recentBlogs: BlogPostProps[] = [
+    {
+      title: 'Pupusas',
+      date: '10-23-2022',
+      preview: 'This is a preview for an amazing article on pupusas!'
+    },
+    {
+      title: 'Samosas',
+      date: '9-23-2022',
+      preview: 'This is a preview for an amazing article on samosas!'
+    }
+  ]
+
+  return {
+    props: {
+      latestBlog,
+      recentBlogs
+    }
   }
-]
-
-const currentBlogPost = {
-  title: 'Welcome to SalvadorIndian',
-  date: 'October 23, 2022',
-  tags: ['General'],
-  content: `
-    Hello, and welcome! This is the first blog of Salvadorindian, created by Carolyn and Francisco.
-
-    We will post all sorts of fun fusion stuff salvadoran x indian, especially homemade recipes like pupusas and somasas :)
-
-    Stay tuned!
-  `
 }
 
-const Home: NextPage = () => {
+// Render home
+const Home = ({ latestBlog, recentBlogs }) => {
+  
   return (
     <Layout home>
-      <Hero />
-      
+      <Hero className={styles.home_hero} />
+
       <div className={`${styles.Home}`}>
-        <Blog {...currentBlogPost} />
-        <HomeSidebar />
+        <Blog {...latestBlog} className={`${styles.home_blog}`} />
+        <HomeSidebar recentBlogs={recentBlogs} />
       </div>
     </Layout>
   );
 };
 
-const Hero = () => {
-  return (
-    <div className={`${styles.home_hero} flex justify-start items-start text-6xl text-white p-6`}>
-      Fusion Food
-    </div>
-  )
-}
 
-type BlogProps = {
-  title: string,
-  date: string,
-  tags: string[],
-  content: string
-}
-const Blog = ({ title, date, tags, content }: BlogProps) => {
-  return (
-    <div className={`${styles.home_blog}`}>
-      <header>
-        <h1>{title}</h1>
-        <hr className="border-t-2 mb-3 border-gray-200" />
-        <div>{date}</div>
-        <div>
-          <span>Tags:</span>
-        </div>
-      </header>
-      <article>
-        {content}
-      </article>
-    </div>
-  )
-}
 
 type BlogPostProps = {
   title: string,
@@ -95,17 +66,17 @@ const BlogPostCard = ({ title, date, preview }: BlogPostProps) => {
 }
 
 type HomeSidebarProps = {
-
+  recentBlogs: BlogPostProps[]
 }
 
-const HomeSidebar = ({ }: HomeSidebarProps) => {
+const HomeSidebar = ({ recentBlogs }: HomeSidebarProps) => {
   return (
     <aside className={`${styles.home_aside}`}>
       <div>
         <h1>Recent Blogs</h1>
         <hr className="border-t-2 mb-3 border-gray-200" />
         <div className="flex flex-wrap gap-4">
-          {mockPostData.map((post, i) => (
+          {recentBlogs.map((post, i) => (
             <BlogPostCard
               key={`index-post-card-${i}`}
               {...post}

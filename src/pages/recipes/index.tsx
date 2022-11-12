@@ -1,8 +1,10 @@
+import Layout from "../../components/layout"
+
 const Recipes = () => {
   return (
-    <div>
+    <Layout>
       Recipes
-    </div>
+    </Layout>
   )
 }
 
