@@ -1,6 +1,6 @@
 
 import Blog from "@components/app/blog";
-import Layout from "@components/layout";
+import Layout from "@components/ui/layout";
 import Hero from "@components/ui/hero";
 import { getLatestBlogPost } from "../lib/blog-api";
 import styles from "../styles/Home.module.css";
