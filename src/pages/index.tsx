@@ -1,7 +1,9 @@
 
 import Blog from "@components/app/blog";
-import Layout from "@components/ui/layout";
+import { BlogPostProps } from "@components/app/blogpost-card";
+import HomeSidebar from "@components/app/home-sidebar";
 import Hero from "@components/ui/hero";
+import Layout from "@components/ui/layout";
 import { getLatestBlogPost } from "../lib/blog-api";
 import styles from "../styles/Home.module.css";
 
@@ -45,47 +47,5 @@ const Home = ({ latestBlog, recentBlogs }) => {
   );
 };
 
-
-
-type BlogPostProps = {
-  title: string,
-  date: string,
-  preview: string
-}
-
-const BlogPostCard = ({ title, date, preview }: BlogPostProps) => {
-  return (
-    <div className={`
-      cursor-pointer
-    `}>
-      <h2 className="font-bold text-lg">{title}</h2>
-      <span className="text-xs text-gray-500">{date}</span>
-      <p>{preview}</p>
-    </div>
-  )
-}
-
-type HomeSidebarProps = {
-  recentBlogs: BlogPostProps[]
-}
-
-const HomeSidebar = ({ recentBlogs }: HomeSidebarProps) => {
-  return (
-    <aside className={`${styles.home_aside}`}>
-      <div>
-        <h1>Recent Blogs</h1>
-        <hr className="border-t-2 mb-3 border-gray-200" />
-        <div className="flex flex-wrap gap-4">
-          {recentBlogs.map((post, i) => (
-            <BlogPostCard
-              key={`index-post-card-${i}`}
-              {...post}
-            />
-          ))}
-        </div>
-      </div>
-    </aside>
-  )
-}
 
 export default Home;

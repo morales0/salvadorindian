@@ -1,35 +1,41 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Icon } from '@iconify/react';
-import styles from './header.module.scss'
+import { Icon } from "@iconify/react";
+import styles from "./header.module.scss";
 
 // Data
-const links = [
-  ["/blog", "Blog"],
-  ["/recipes", "Recipes"],
-  ["#", "About"],
-  ["#", "Contact Us"],
-];
-
 const mainLinks = [
   ["Blog", "/blog"],
   ["Recipes", "/recipes"],
-  ["Favorites", "/favorites"]
-]
+  ["Favorites", "/favorites"],
+];
+const secondaryLinks = [
+  ["About", "#"],
+  ["Contact", "#"],
+];
 
 // Components
 type NavItemProps = {
-  href: string,
-  children: React.ReactNode
-}
+  href: string;
+  main?: boolean;
+  children: React.ReactNode;
+};
 
-const NavItem = ({ href, children }: NavItemProps) => {
+const NavItem = ({ href, main, children }: NavItemProps) => {
   return (
-    <li className={`
-      
+    <li
+      className={`
+
+        uppercase
+        ${main || `text-sm`}
+        
+
+        ${main && `border-b-2 border-yellow-700 text-base lg:text-lg`}
+        
 
       
-    `}>
+    `}
+    >
       <Link href={href}>{children}</Link>
     </li>
   );
@@ -37,7 +43,7 @@ const NavItem = ({ href, children }: NavItemProps) => {
 
 const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
-  const [scrolledDown, setScrolledDown] = useState(false)
+  const [scrolledDown, setScrolledDown] = useState(false);
 
   /* useEffect(() => {
     console.log(window.scrollY);
@@ -52,72 +58,77 @@ const Header = () => {
 
   return (
     <>
-      <header className="flex flex-col items-center px-4 pt-3 bg-white">
-        <nav className={`grid grid-cols-3 w-full lg:w-4/5 mb-2`}>
-          <div className="flex flex-grow">
+      <header
+        className={`flex flex-col items-center px-4 pt-5 pb-2 sm:pb-0 ${
+          navbarOpen || `border-b border-yellow-700`
+        } sm:border-0 bg-white`}
+      >
+        <nav
+          className={`
+            flex items-center justify-between
+            sm:grid sm:grid-cols-3 lg:items-start 
+            
+            w-full lg:w-4/5 mb-2
+          `}
+        >
+          <div className="hidden sm:flex flex-grow">
             <ul className="flex gap-4 mr-auto">
-              <li>About</li>
-              <li>Contact</li>
+              {secondaryLinks.map(([name, route], i) => (
+                <NavItem key={`secondary-nav-item-${i}`} href={route}>
+                  {name}
+                </NavItem>
+              ))}
             </ul>
           </div>
-          <div className={`${styles.brand} flex justify-center flex-grow ${scrolledDown ? "text-2xl" : "text-4xl"} font-bold whitespace-nowrap uppercase transition-all duration-700`}>
-            <span className="text-blue-500">Salvador</span><span className="text-yellow-700">Indian</span>
+          <div
+            className={`${styles.brand} flex sm:justify-center flex-grow text-3xl lg:text-5xl font-bold whitespace-nowrap uppercase transition-all duration-700`}
+          >
+            <span className="text-blue-500">Salvador</span>
+            <span className="text-yellow-700">Indian</span>
           </div>
           <div className="flex flex-grow">
             <ul className="flex gap-4 ml-auto">
-              <li><Icon icon="ic:outline-light-mode" width={25} height={25} /></li>
-              <li><Icon icon="akar-icons:gear" width={25} height={25} /></li>
+              <li className="cursor-pointer">
+                <Icon icon="ic:outline-light-mode" width={25} height={25} />
+              </li>
+              <li className="sm:hidden cursor-pointer">
+                <Icon
+                  icon="quill:hamburger"
+                  width={25}
+                  height={25}
+                  onClick={() => setNavbarOpen(!navbarOpen)}
+                />
+              </li>
+              {/* <li><Icon icon="akar-icons:gear" width={25} height={25} /></li> */}
             </ul>
           </div>
         </nav>
-
-
-
-        {/* <nav className="w-4/5 px-4 mx-auto flex flex-wrap items-center justify-between">
-        <div className="w-full relative flex justify-between md:w-auto md:static md:block md:justify-start">
-          <Link href="/">
-            <a className="text-lg text-yellow-700 font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase">
-              Salvadorindian
-            </a>
-          </Link>
-          <button
-            className={`cursor-pointer leading-none px-1 py-1 border border-solid border-transparent 
-              rounded bg-transparent block md:hidden outline-none focus:outline-none`}
-            type="button"
-            onClick={() => setNavbarOpen(!navbarOpen)}
-          >
-            {[0, 1, 2].map(k => (
-              <div key={`hamburger-${k}`} className="w-7 h-1 m-1 border-solid rounded-lg bg-gray-800" />
-            ))}
-          </button>
-        </div>
-        <div
-          className={
-            "md:flex flex-grow items-center" +
-            (navbarOpen ? " flex" : " hidden")
-          }
-          id="example-navbar-danger"
-        >
-          <ul className="flex flex-col md:flex-row list-none md:ml-auto">
-            {links.map(([href, label], i) => (
-              <NavItem key={`navlink-${i}`} href={href}>
-                {label}
+      </header>
+      <header
+        className={`sticky top-0 ${
+          navbarOpen || `hidden`
+        } sm:flex flex-col items-center px-4 py-4 bg-white shadow-md border-b border-yellow-700`}
+      >
+        <nav className="sticky top-0 flex flex-col justify-start items-center gap-6 lg:w-4/5">
+          <ul className="sm:hidden flex gap-4">
+            {secondaryLinks.map(([name, route], i) => (
+              <NavItem key={`secondary-nav-item-${i}`} href={route}>
+                {name}
               </NavItem>
             ))}
           </ul>
-        </div>
-      </nav> */}
-      </header>
-      <header className="sticky top-0 flex flex-col items-center px-4 py-4 bg-white shadow-md border-b border-yellow-700">
-        <nav className="sticky top-0 flex justify-center items-start lg:w-4/5">
-          <ul className="flex gap-4">
-            {mainLinks.map(([name, route], i) => <NavItem key={`nav-item-${i}`} href={route}>{name}</NavItem> )}
+
+          <ul className="flex gap-8">
+            {mainLinks.map(([name, route], i) => (
+              <NavItem key={`nav-item-${i}`} href={route} main>
+                {name}
+              </NavItem>
+            ))}
           </ul>
         </nav>
       </header>
     </>
   );
-}
+};
 
 export default Header;
-
