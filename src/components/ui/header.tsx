@@ -11,6 +11,12 @@ const links = [
   ["#", "Contact Us"],
 ];
 
+const mainLinks = [
+  ["Blog", "/blog"],
+  ["Recipes", "/recipes"],
+  ["Favorites", "/favorites"]
+]
+
 // Components
 type NavItemProps = {
   href: string,
@@ -19,7 +25,11 @@ type NavItemProps = {
 
 const NavItem = ({ href, children }: NavItemProps) => {
   return (
-    <li className="px-2 py-2 text-sm hover:opacity-75">
+    <li className={`
+      
+
+      
+    `}>
       <Link href={href}>{children}</Link>
     </li>
   );
@@ -41,34 +51,29 @@ const Header = () => {
   } */
 
   return (
-    <header className="sticky top-0 flex flex-col items-center px-4 py-3 bg-white shadow-md">
-      <nav className={`grid grid-cols-3 w-full lg:w-4/5 mb-2`}>
-        <div className="flex flex-grow">
-          <ul className="flex gap-4 mr-auto">
-            <li>About</li>
-            <li>Contact</li>
-          </ul>
-        </div>
-        <div className={`${styles.brand} flex justify-center flex-grow ${scrolledDown ? "text-2xl" : "text-4xl"} font-bold whitespace-nowrap uppercase transition-all duration-700`}>
-          <span className="text-blue-500">Salvador</span><span className="text-yellow-700">Indian</span>
-        </div>
-        <div className="flex flex-grow">
-          <ul className="flex gap-4 ml-auto">
-            <li><Icon icon="ic:outline-light-mode" width={25} height={25} /></li>
-            <li><Icon icon="akar-icons:gear" width={25} height={25} /></li>
-          </ul>
-        </div>
-      </nav>
+    <>
+      <header className="flex flex-col items-center px-4 pt-3 bg-white">
+        <nav className={`grid grid-cols-3 w-full lg:w-4/5 mb-2`}>
+          <div className="flex flex-grow">
+            <ul className="flex gap-4 mr-auto">
+              <li>About</li>
+              <li>Contact</li>
+            </ul>
+          </div>
+          <div className={`${styles.brand} flex justify-center flex-grow ${scrolledDown ? "text-2xl" : "text-4xl"} font-bold whitespace-nowrap uppercase transition-all duration-700`}>
+            <span className="text-blue-500">Salvador</span><span className="text-yellow-700">Indian</span>
+          </div>
+          <div className="flex flex-grow">
+            <ul className="flex gap-4 ml-auto">
+              <li><Icon icon="ic:outline-light-mode" width={25} height={25} /></li>
+              <li><Icon icon="akar-icons:gear" width={25} height={25} /></li>
+            </ul>
+          </div>
+        </nav>
 
-      <nav className="flex justify-center items-start lg:w-4/5">
-        <ul className="flex gap-4">
-          <li>Blog</li>
-          <li>Recipes</li>
-          <li>Favorites</li>
-        </ul>
-      </nav>
 
-      {/* <nav className="w-4/5 px-4 mx-auto flex flex-wrap items-center justify-between">
+
+        {/* <nav className="w-4/5 px-4 mx-auto flex flex-wrap items-center justify-between">
         <div className="w-full relative flex justify-between md:w-auto md:static md:block md:justify-start">
           <Link href="/">
             <a className="text-lg text-yellow-700 font-bold leading-relaxed inline-block mr-4 py-2 whitespace-nowrap uppercase">
@@ -102,8 +107,17 @@ const Header = () => {
           </ul>
         </div>
       </nav> */}
-    </header>
+      </header>
+      <header className="sticky top-0 flex flex-col items-center px-4 py-4 bg-white shadow-md border-b border-yellow-700">
+        <nav className="sticky top-0 flex justify-center items-start lg:w-4/5">
+          <ul className="flex gap-4">
+            {mainLinks.map(([name, route], i) => <NavItem key={`nav-item-${i}`} href={route}>{name}</NavItem> )}
+          </ul>
+        </nav>
+      </header>
+    </>
   );
 }
 
 export default Header;
+
