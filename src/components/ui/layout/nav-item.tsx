@@ -10,14 +10,18 @@ export const NavItem = ({ href, main, children }: NavItemProps) => {
   return (
     <li
       className={`
+        flex
         uppercase
-        py-1 px-4
+        text-sm
+        p-0
         rounded-t-md hover:bg-orange-50 transition duration-200
         ${main || `text-sm`}
-        ${main && `border-b border-yellow-700 text-base lg:text-lg`}
+        ${main && `border-b border-yellow-700 lg:text-base`}
       `}
     >
-      <Link href={href}>{children}</Link>
+      <Link className="px-1 py-1 sm:px-2 sm:py-1" href={href}>
+        {children}
+      </Link>
     </li>
   );
 };

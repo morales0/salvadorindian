@@ -11,7 +11,7 @@ type LayoutProps = {
 
 const Layout = ({ children, home, mainClasses }: LayoutProps) => {
   return (
-    <div className="flex flex-col min-h-full relative">
+    <div className="flex flex-col relative min-h-full">
       <Header />
       <main className={clsx(mainClasses)}>{children}</main>
       <Footer />

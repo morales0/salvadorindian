@@ -33,48 +33,7 @@ import styles from "../styles/Home.module.css";
 
 // Render home
 const Home = () => {
-  return (
-    <Layout home>
-      <div>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-        <h1>filler</h1>
-      </div>
-    </Layout>
-  );
+  return <Layout home>Home</Layout>;
 };
 
 export default Home;
