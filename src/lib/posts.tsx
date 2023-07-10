@@ -3,7 +3,6 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
-import NotionPageToHtml from "notion-page-to-html";
 
 /*
 const postsDirectory = path.join(process.cwd(), "posts");

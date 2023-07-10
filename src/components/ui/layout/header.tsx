@@ -2,7 +2,8 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Icon } from "@iconify/react";
 import styles from "./header.module.scss";
-import NavItem from "./nav-item";
+import { NavItem } from "./nav-item";
+import clsx from "clsx";
 
 // Data
 const mainLinks = [
@@ -16,33 +17,27 @@ const secondaryLinks = [
 ];
 
 // Component
-const Header = () => {
+export const Header = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
     <>
       <header
-        className={`sticky top-0 flex flex-col items-center px-4 pt-5 pb-2 sm:static sm:pb-0 ${
-          navbarOpen || `border-b border-yellow-700`
-        } bg-white sm:border-0`}
+        className={clsx(
+          "sticky top-0 flex items-center px-4 pt-5 pb-2 bg-slate-200",
+          "sm:static sm:pb-0 sm:border-0",
+          navbarOpen && "border-b border-yellow-700"
+        )}
       >
-        <nav
-          className={`
-            mb-2 flex w-full
-            items-center justify-between sm:grid 
-            
-            sm:grid-cols-3 lg:w-4/5 lg:items-start
-          `}
-        >
-          <div className="hidden flex-grow sm:flex">
-            <ul className="mr-auto flex gap-4">
-              {secondaryLinks.map(([name, route], i) => (
-                <NavItem key={`secondary-nav-item-${i}`} href={route}>
-                  {name}
-                </NavItem>
-              ))}
-            </ul>
-          </div>
+        <nav className="mb-2 flex w-full items-center justify-between sm:grid sm:grid-cols-3 lg:w-4/5 lg:items-start">
+          <ul className="hidden sm:flex mr-auto gap-4 flex-grow ">
+            {secondaryLinks.map(([name, route], i) => (
+              <NavItem key={name} href={route}>
+                {name}
+              </NavItem>
+            ))}
+          </ul>
+
           <div
             className={`${styles.brand} flex flex-grow whitespace-nowrap text-3xl font-bold uppercase transition-all duration-700 sm:justify-center lg:text-5xl`}
           >
@@ -68,11 +63,12 @@ const Header = () => {
         </nav>
       </header>
       <header
-        className={`static top-0 sm:sticky ${
-          navbarOpen || `hidden`
-        } flex-col items-center border-b border-yellow-700 bg-white px-4 py-4 shadow-md sm:flex`}
+        className={clsx(
+          "flex-col items-center border-b border-yellow-700 bg-white px-4 py-4 shadow-md sm:flex",
+          navbarOpen && "hidden"
+        )}
       >
-        <nav className="sticky top-0 flex flex-col items-center justify-start gap-6 lg:w-4/5">
+        <nav className="sticky top-0 flex flex-col items-center justify-start gap-2 lg:w-4/5">
           <ul className="flex gap-4 sm:hidden">
             {secondaryLinks.map(([name, route], i) => (
               <NavItem key={`secondary-nav-item-${i}`} href={route}>
@@ -81,7 +77,7 @@ const Header = () => {
             ))}
           </ul>
 
-          <ul className="flex gap-8">
+          <ul className="sticky top-0 flex gap-8  ">
             {mainLinks.map(([name, route], i) => (
               <NavItem key={`nav-item-${i}`} href={route} main>
                 {name}

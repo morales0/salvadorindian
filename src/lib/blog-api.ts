@@ -1,10 +1,11 @@
 import fs from "fs";
 import matter from "gray-matter";
 import path from "path";
-import { remark } from "remark";
+import { unified } from "unified";
 import html from "remark-html";
+import remarkParse from "remark-parse";
 
-const blogDir = path.join(process.cwd(), "src/content");
+/* const blogDir = path.join(process.cwd(), "src/content");
 
 // Return the most recent blog post data and content
 export const getLatestBlogPost = async () => {
@@ -13,7 +14,7 @@ export const getLatestBlogPost = async () => {
   const fileContents = fs.readFileSync(filePath);
 
   const matterResult = matter(fileContents);
-  const remarkResult = await remark().use(html).process(matterResult.content);
+  const remarkResult = await unified().use(remarkParse).use(html).process(matterResult.content);
   const htmlContent = remarkResult.toString();
 
   const data = {
@@ -23,4 +24,4 @@ export const getLatestBlogPost = async () => {
   };
 
   return data;
-};
+}; */

@@ -1,12 +1,12 @@
 import Link from "next/link";
+import { PropsWithChildren } from "react";
 
 type NavItemProps = {
   href: string;
   main?: boolean;
-  children: React.ReactNode;
-};
+} & PropsWithChildren;
 
-const NavItem = ({ href, main, children }: NavItemProps) => {
+export const NavItem = ({ href, main, children }: NavItemProps) => {
   return (
     <li
       className={`
@@ -21,5 +21,3 @@ const NavItem = ({ href, main, children }: NavItemProps) => {
     </li>
   );
 };
-
-export default NavItem;

@@ -1,14 +1,13 @@
-
 import Blog from "@components/app/blog";
 import { BlogPostProps } from "@components/app/blogpost-card";
 import HomeSidebar from "@components/app/home-sidebar";
 import Hero from "@components/ui/hero";
-import Layout from "@components/ui/layout";
-import { getLatestBlogPost } from "../lib/blog-api";
+import Layout from "@components/ui/layout/layout";
+// import { getLatestBlogPost } from "../lib/blog-api";
 import styles from "../styles/Home.module.css";
 
 // Get latest blog posts and some recipes
-export const getStaticProps = async () => {
+/* export const getStaticProps = async () => {
   // use api to get blogs
   const latestBlog = await getLatestBlogPost()
   const recentBlogs: BlogPostProps[] = [
@@ -30,22 +29,52 @@ export const getStaticProps = async () => {
       recentBlogs
     }
   }
-}
+} */
 
 // Render home
-const Home = ({ latestBlog, recentBlogs }) => {
-  
+const Home = () => {
   return (
     <Layout home>
-      <Hero className={styles.home_hero} />
-
-      <div className={`${styles.Home}`}>
-        <Blog {...latestBlog} className={`${styles.home_blog}`} />
-        <HomeSidebar recentBlogs={recentBlogs} />
+      <div>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
+        <h1>filler</h1>
       </div>
     </Layout>
   );
 };
-
 
 export default Home;
