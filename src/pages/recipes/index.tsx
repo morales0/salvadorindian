@@ -1,7 +1,7 @@
 import Layout from "../../components/ui/layout/layout";
 
 const Recipes = () => {
-  return <Layout>Recipes</Layout>;
+  return <div>Recipes</div>;
 };
 
 export default Recipes;

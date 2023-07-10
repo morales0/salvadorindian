@@ -33,7 +33,7 @@ import styles from "../styles/Home.module.css";
 
 // Render home
 const Home = () => {
-  return <Layout home>Home</Layout>;
+  return <div style={{ height: "1000px" }}>Home</div>;
 };
 
 export default Home;

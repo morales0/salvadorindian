@@ -16,7 +16,7 @@ const mockPostData = [
 
 const Blog = () => {
   return (
-    <Layout>
+    <div>
       <div className="my-6 mx-auto font-bold text-lg max-w-3xl px-8">
         Our blog
       </div>
@@ -31,7 +31,7 @@ const Blog = () => {
           );
         })}
       </div>
-    </Layout>
+    </div>
   );
 };
 
