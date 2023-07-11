@@ -1,6 +1,6 @@
 ---
-title: 'This is a new and dynamically generated blog page'
-date: '2022-22-09'
+title: 'Storytime with Stormplup'
+date: 'October 10th, 2022'
 ---
 
 FOR IMMEDIATE RELEASE

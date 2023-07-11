@@ -1,3 +1,7 @@
 {
-  "eslint.alwaysShowStatus": true
+  "eslint.alwaysShowStatus": true,
+  "editor.formatOnSave": true,
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
