@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "contentful-typescript-codegen": "contentful-typescript-codegen --output src/types/generated/contentful.d.ts",
+    "contentful-typescript-codegen": "contentful-typescript-codegen --output src/types/generated/intercom/contentful.ts",
+    "generate-contentful-types": "cf-content-types-generator src/util/import.json -o src/types/generated/labs/",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
@@ -28,6 +29,7 @@
     "@types/react": "^18.2.14",
     "@types/react-dom": "^18.2.6",
     "autoprefixer": "^10.4.12",
+    "cf-content-types-generator": "^2.12.2",
     "clsx": "^1.2.1",
     "contentful-import": "^8.5.62",
     "contentful-typescript-codegen": "^3.4.0",

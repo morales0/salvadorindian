@@ -1,11 +1,6 @@
-import { getAllRecipesWithSlug, getRecipe } from "data/contentful";
-import {
-  GetStaticProps,
-  GetStaticPaths,
-  GetServerSideProps,
-  InferGetStaticPropsType,
-} from "next";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
+import { getAllRecipesWithSlug, getRecipe } from "data/contentful";
+import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from "next";
 
 const Recipe = ({ recipe }: InferGetStaticPropsType<typeof getStaticProps>) => {
   return (
@@ -19,16 +14,16 @@ const Recipe = ({ recipe }: InferGetStaticPropsType<typeof getStaticProps>) => {
 };
 
 // Extract data from recipe and pass as props to page component
-export const getStaticProps: GetStaticProps<{
-  preview: boolean;
-  recipe: any;
-}> = async ({ params, preview = false }) => {
-  const data = await getRecipe(params.slug as string, preview);
+export const getStaticProps: GetStaticProps = async ({
+  params,
+  preview = false,
+}) => {
+  const recipe = await getRecipe(params.slug as string, preview);
 
   return {
     props: {
       preview,
-      recipe: data,
+      recipe,
     },
   };
 };
@@ -38,11 +33,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   const allRecipes = await getAllRecipesWithSlug();
   return {
     paths:
-      allRecipes?.items?.map(({ sys, fields }) => ({
-        params: {
-          slug: `/recipes/${fields.slug}`,
-        },
-      })) ?? [],
+      allRecipes?.items?.map(({ sys, fields }) => `/recipes/${fields.slug}`) ??
+      [],
     fallback: true,
   };
 };

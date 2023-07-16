@@ -1,14 +1,12 @@
 import { fetchRecipe, fetchRecipes } from "@api/recipe";
 
-export type GetRecipe = (slug: string, preview: boolean) => Promise<any>;
-export const getRecipe: GetRecipe = async (slug, preview) => {
+export const getRecipe = async (slug: string, preview: boolean) => {
   const recipe = await fetchRecipe(slug);
 
-  return recipe?.items?.[0] ?? ({} as any);
+  return recipe;
 };
 
-export type GetAllRecipesWithSlug = () => Promise<any>;
-export const getAllRecipesWithSlug: GetAllRecipesWithSlug = async () => {
+export const getAllRecipesWithSlug = async () => {
   const recipes = await fetchRecipes();
 
   return recipes;
