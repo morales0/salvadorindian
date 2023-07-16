@@ -4,11 +4,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "contentful-typescript-codegen": "contentful-typescript-codegen --output src/types/generated/contentful.d.ts",
     "build": "next build",
     "start": "next start",
     "lint": "next lint"
   },
   "dependencies": {
+    "@contentful/rich-text-react-renderer": "^15.17.0",
+    "contentful": "^10.3.4",
+    "contentful-management": "^10.39.1",
     "gray-matter": "^4.0.3",
     "next": "^13.4.9",
     "react": "18.2.0",
@@ -25,12 +29,16 @@
     "@types/react-dom": "^18.2.6",
     "autoprefixer": "^10.4.12",
     "clsx": "^1.2.1",
+    "contentful-import": "^8.5.62",
+    "contentful-typescript-codegen": "^3.4.0",
+    "dotenv": "^16.3.1",
     "eslint": "^8.44.0",
     "eslint-config-next": "^13.4.9",
     "postcss": "^8.4.17",
     "prettier": "^3.0.0",
     "prettier-plugin-tailwindcss": "^0.3.0",
     "tailwindcss": "^3.1.8",
+    "ts-node": "^10.9.1",
     "typescript": "^5.1.6"
   }
 }
