@@ -17,6 +17,7 @@ export default async function preview(req, res) {
 
   // Enable Draft Mode by setting the cookie
   res.setDraftMode({ enable: true });
+  res.setPreviewData({});
 
   // Redirect to the path from the fetched post
   // We don't redirect to req.query.slug as that might lead to open redirect vulnerabilities
