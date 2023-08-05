@@ -7,8 +7,11 @@ const contentfulLoader = ({ src, width, quality }) => {
   return `${src}?w=${width}&q=${quality || 75}`;
 };
 
-const Recipe = ({ recipe }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  console.log(recipe);
+const Recipe = ({
+  recipe,
+  preview,
+}: InferGetStaticPropsType<typeof getStaticProps>) => {
+  console.log(recipe, preview);
   const name = recipe?.fields?.name;
   const description = documentToReactComponents(recipe?.fields?.description);
   const procedure = documentToReactComponents(recipe?.fields?.procedure);
