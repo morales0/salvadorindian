@@ -33,6 +33,10 @@ a {
 
 /* Custom/Overrides */
 
+ol {
+  list-style: decimal;
+}
+
 /* Misc */
 .bg-gold {
   background-color: #ffe34b40;

@@ -1,13 +1,15 @@
 import { BASE_URL } from "./constants";
-import client from "@api/client";
+import { deliveryClient, previewClient } from "@api/client";
 
 export const fetchRecipes = async () => {
+  const client = deliveryClient;
   const entries = await client.getEntries({ content_type: "recipe" });
 
   return entries;
 };
 
-export const fetchRecipe = async (slug: string) => {
+export const fetchRecipe = async (slug: string, preview: boolean) => {
+  const client = preview ? previewClient : deliveryClient;
   const recipe = await client
     .getEntries({
       content_type: "recipe",
