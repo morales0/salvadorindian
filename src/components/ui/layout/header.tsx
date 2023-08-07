@@ -4,6 +4,9 @@ import { Icon } from "@iconify/react";
 import styles from "./header.module.scss";
 import { NavItem } from "./nav-item";
 import clsx from "clsx";
+import salvadorindianBrand from "@assets/salvadorindian-brand-logo.svg";
+import Image from "next/image";
+import { useRouter } from "next/router";
 
 // Data
 const mainLinks = [
@@ -17,11 +20,61 @@ const secondaryLinks = [
   ["Contact", "/contact"],
 ];
 
+const Brand = () => (
+  <div className="flex flex-row">
+    <div className={clsx(styles.brand)}>Salvador</div>
+    <div>Indian</div>
+  </div>
+);
+
 // Component
 export const Header = () => {
+  const router = useRouter();
   const [navbarOpen, setNavbarOpen] = useState(false);
 
   return (
+    <div>
+      <div className="px-4 py-2 bg-slate-200">
+        <div className="flex flex-row">
+          <nav className="flex flex-row gap-4">
+            <Link href="/">home</Link>
+            <div>about</div>
+            <div>contact</div>
+          </nav>
+        </div>
+      </div>
+      <div className="flex flex-row items-center py-6">
+        <Image src={salvadorindianBrand} alt="Brand" height={140} />
+        <div className="flex flex-col items-start gap-3 text-2xl">
+          <Link
+            className={clsx(styles.navLink, {
+              [styles.navLinkActive]: router.pathname === "/recipes",
+            })}
+            href="/recipes"
+          >
+            original recipes
+          </Link>
+          <Link
+            className={clsx(styles.navLink, {
+              [styles.navLinkActive]: router.pathname === "/blog",
+            })}
+            href="/blog"
+          >
+            blog
+          </Link>
+          <Link
+            className={clsx(styles.navLink, {
+              [styles.navLinkActive]: router.pathname === "/inspo",
+            })}
+            href="/inspo"
+          >
+            inspiration
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+  /* return (
     <>
       <header
         className={clsx(
@@ -61,7 +114,6 @@ export const Header = () => {
                 onClick={() => setNavbarOpen(!navbarOpen)}
               />
             </li>
-            {/* <li><Icon icon="akar-icons:gear" width={25} height={25} /></li> */}
           </ul>
         </nav>
         <nav
@@ -106,7 +158,7 @@ export const Header = () => {
         </nav>
       </header>
     </>
-  );
+  ); */
 };
 
 export default Header;
