@@ -28,7 +28,31 @@ const Recipe = ({
   );
 
   return (
-    <div className="p-4">
+    <div className="container mx-auto p-4 ">
+      <h1 className="text-2xl text-left font-bold">{name}</h1>
+      <hr className="h-px mb-4 bg-gray-300 border-0" />
+      <div className="flex flex-row flex-wrap gap-0">
+        <Image
+          className="my-2"
+          loader={contentfulLoader}
+          width={400}
+          height={0}
+          src={recipe?.fields?.hero.fields.file.url}
+          alt={recipe?.fields?.hero.fields.title}
+        />
+        <div className="text-gray-600 mb-6 grow">{description}</div>
+      </div>
+
+      <h2 className="text-xl font-bold mb-2">Ingredients</h2>
+      <hr className="h-px mb-4 bg-gray-300 border-0" />
+
+      <ul className="list-disc pl-6 mb-6">{ingredientsList}</ul>
+
+      <h2 className="text-xl font-bold mb-2">Procedure</h2>
+      <hr className="h-px mb-4 bg-gray-300 border-0" />
+
+      <div className=" pl-6">{procedure}</div>
+      {/* 
       <div className="max-w-3xl mx-auto bg-amber-50 rounded-md shadow-md p-8">
         <h1 className="text-3xl text-center font-bold mb-4">{name}</h1>
         <Image
@@ -39,14 +63,7 @@ const Recipe = ({
           src={recipe?.fields?.hero.fields.file.url}
           alt={recipe?.fields?.hero.fields.title}
         />
-        <div className="text-gray-600 mb-6">{description}</div>
-
-        <h2 className="text-xl font-bold mb-2">Ingredients</h2>
-        <ul className="list-disc pl-6 mb-6">{ingredientsList}</ul>
-
-        <h2 className="text-xl font-bold mb-2">Procedure</h2>
-        <div className=" pl-6">{procedure}</div>
-      </div>
+      </div> */}
     </div>
   );
 };
