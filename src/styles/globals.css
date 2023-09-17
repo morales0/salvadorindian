@@ -16,6 +16,7 @@ body {
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
 
   background-color: rgb(240, 240, 240);
+  color: rgb(40, 40, 40)
 }
 
 #__next {
@@ -57,8 +58,9 @@ h1 {
   html {
     color-scheme: dark;
   }
+
   body {
     color: white;
-    background: black;
+    background: rgb(43, 43, 43);
   }
 } */
