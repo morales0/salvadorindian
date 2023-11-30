@@ -21,19 +21,19 @@
     "incremental": true,
     "baseUrl": "src",
     "paths": {
-      "@components/*": [
+      "@/components/*": [
         "components/*"
       ],
-      "@styles/*": [
+      "@/styles/*": [
         "styles/*"
       ],
-      "@assets/*": [
+      "@/assets/*": [
         "assets/*"
       ],
-      "@api/*": [
+      "@/api/*": [
         "api/*"
       ],
-      "@types/*": [
+      "@/types/*": [
         "types/*"
       ]
     }
